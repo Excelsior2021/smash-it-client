@@ -1,0 +1,21 @@
+@use "./fonts" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: $table-tennis-white;
+  font-size: 1.6rem;
+  font-family: Oswald;
+}

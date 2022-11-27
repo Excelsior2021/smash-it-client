@@ -1,0 +1,24 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.group {
+  position: relative;
+
+  &__heading {
+    @include heading-mobile;
+  }
+
+  &__actions {
+    margin: 16px 0;
+  }
+
+  &__asides {
+    @include media-tablet {
+      display: flex;
+
+      &--seperator {
+        width: 200px;
+      }
+    }
+  }
+}

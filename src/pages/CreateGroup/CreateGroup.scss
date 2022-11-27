@@ -1,0 +1,28 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.create-group {
+  &__heading {
+    @include heading-mobile;
+
+    @include media-tablet {
+      @include heading;
+    }
+  }
+
+  &__form {
+    @include media-tablet {
+      width: $max-width-form;
+      margin: auto;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__text {
+    text-align: center;
+  }
+}

@@ -1,0 +1,23 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.group-search-item {
+  @include card-mobile;
+  margin-bottom: $padding-mobile;
+  padding: $padding-mobile;
+  list-style: none;
+
+  @include media-tablet {
+    width: $max-width-form;
+    margin: 0 auto $padding-mobile auto;
+  }
+
+  &__heading {
+    border-bottom: 1px solid $table-tennis-white;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

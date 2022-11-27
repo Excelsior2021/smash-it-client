@@ -1,0 +1,21 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.home {
+  &__landing {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  &__slogan {
+    width: fit-content;
+    margin: auto;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+  }
+}

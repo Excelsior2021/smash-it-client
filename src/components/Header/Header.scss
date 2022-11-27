@@ -1,0 +1,34 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: $table-tennis-blue-dark;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding: $padding-mobile;
+
+    @include media-tablet {
+      padding: 0;
+    }
+
+    @include media-desktop {
+      max-width: $max-width-desktop;
+      margin: auto;
+    }
+  }
+
+  &__menu {
+    width: 50px;
+    cursor: pointer;
+
+    @include media-tablet {
+      display: none;
+    }
+  }
+}

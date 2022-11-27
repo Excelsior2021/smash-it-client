@@ -1,0 +1,9 @@
+@use "resets.scss" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

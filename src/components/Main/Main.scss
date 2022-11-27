@@ -1,0 +1,20 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.main {
+  flex-grow: 1;
+  background-color: $table-tennis-blue-light;
+
+  &__container {
+    padding: $padding-mobile;
+
+    @include media-tablet {
+      padding: $padding-tablet;
+    }
+
+    @include media-desktop {
+      max-width: $max-width-desktop;
+      margin: auto;
+    }
+  }
+}

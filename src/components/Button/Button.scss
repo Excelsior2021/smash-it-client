@@ -1,0 +1,104 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.button {
+  display: block;
+  color: $table-tennis-white;
+  background-color: $table-tennis-blue-dark;
+  font-weight: 700;
+  border: 0;
+  border-radius: $border-radius-button;
+  margin: 2.4rem 0;
+  padding: 1rem;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $table-tennis-blue-highlight;
+  }
+
+  @include media-tablet {
+    max-width: 250px;
+  }
+
+  &--home {
+    min-width: 250px;
+    border: 2px solid $table-tennis-white;
+  }
+
+  &--record-match,
+  &--join-create--dashboard {
+    @include media-tablet {
+      margin: 0;
+      margin-right: 24px;
+    }
+  }
+
+  &--group-search-item {
+    border: 0;
+    background-color: green;
+    width: 150px;
+
+    &:hover {
+      background-color: rgb(0, 137, 0);
+    }
+  }
+
+  &--group-search-item--clicked {
+    border: 1px solid $table-tennis-white;
+    background-color: grey;
+    opacity: 80%;
+    width: 150px;
+    cursor: default;
+
+    &:hover {
+      background-color: grey;
+    }
+  }
+
+  &--modal-cancel {
+    border: 0;
+    flex-grow: 1;
+    max-width: 48%;
+
+    &:hover {
+      background-color: $table-tennis-blue-highlight;
+    }
+
+    &--long {
+      max-width: 100%;
+    }
+  }
+
+  &--modal-submit {
+    border: 0;
+    background-color: $table-tennis-green;
+    flex-grow: 1;
+    max-width: 48%;
+
+    &:hover {
+      background-color: rgb(0, 137, 0);
+    }
+  }
+
+  &--whitewashed,
+  &--winBy2,
+  &--change-opponent {
+    border: 1px solid $table-tennis-white;
+  }
+
+  &--compare-stats {
+    @include media-tablet {
+      position: absolute;
+      margin: 0;
+      top: 10px;
+      right: 250px;
+    }
+  }
+
+  &--moderate-group {
+    @include media-tablet {
+      margin: 0;
+    }
+  }
+}

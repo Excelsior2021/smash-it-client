@@ -1,0 +1,18 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.join-group {
+  &__heading {
+    @include heading-mobile;
+  }
+
+  &__form {
+    @include media-tablet {
+      width: $max-width-form;
+      margin: auto;
+    }
+  }
+
+  &__filtered-groups {
+  }
+}

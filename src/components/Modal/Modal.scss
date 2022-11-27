@@ -1,0 +1,82 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+%modal-padding {
+  padding: 8px 16px;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+}
+
+.modal-content {
+  position: fixed;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $table-tennis-blue-light;
+  border-radius: 4px;
+  width: 90%;
+  max-width: 600px;
+  height: 300px;
+  z-index: 20;
+
+  &__header {
+    @extend %modal-padding;
+    background-color: $table-tennis-blue-dark;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+
+    @include media-tablet {
+      font-size: 2rem;
+    }
+  }
+
+  &__main {
+    @extend %modal-padding;
+
+    width: 90%;
+    margin: auto;
+  }
+
+  &__message {
+    @include heading-mobile;
+    text-align: center;
+
+    @include media-tablet {
+      font-size: 3rem;
+      text-align: center;
+    }
+  }
+
+  &__scores {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+
+    @include media-tablet {
+      font-size: 2rem;
+    }
+  }
+
+  &__actions {
+    @extend %modal-padding;
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+  }
+}

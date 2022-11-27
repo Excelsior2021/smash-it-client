@@ -1,0 +1,29 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.dashboard {
+  position: relative;
+
+  &__header {
+    @include media-tablet {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__actions {
+    @include media-tablet {
+      display: flex;
+    }
+  }
+
+  &__heading {
+    @include heading-mobile;
+  }
+
+  &__card {
+    @include card-mobile;
+    margin: $padding-mobile auto;
+    padding: $padding-mobile;
+  }
+}

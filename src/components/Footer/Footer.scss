@@ -1,0 +1,10 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: $table-tennis-blue-dark;
+  width: 100%;
+  padding: 20px $padding-mobile;
+}

@@ -1,0 +1,69 @@
+@use "../../styles/partials/variables" as *;
+
+@mixin heading-mobile {
+  margin-bottom: 1.6rem;
+}
+
+@mixin heading {
+  margin-bottom: 3.6rem;
+}
+
+@mixin card-mobile {
+  background-color: $table-tennis-blue-dark;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow: auto;
+  margin-bottom: 16px;
+  @include media-tablet {
+    margin-bottom: 24px;
+  }
+}
+
+@mixin table-field-layout($field-height) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+  height: $field-height;
+  text-align: center;
+  background-color: $table-tennis-blue-dark;
+
+  &--alternative {
+    background-color: $table-tennis-blue-highlight;
+  }
+}
+
+@mixin scrollbars-custom {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+@mixin media-tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: 1020px) {
+    @content;
+  }
+}

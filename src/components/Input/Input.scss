@@ -1,0 +1,28 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $padding-mobile;
+
+  &__label {
+    margin-bottom: $margin-bottom-label;
+  }
+
+  &__input {
+    border: none;
+    border-radius: 4px;
+    padding: $padding-form-input;
+  }
+
+  &__invalid {
+    color: $table-tennis-orange;
+  }
+
+  &--record-match {
+    @include media-tablet {
+      width: 50%;
+    }
+  }
+}

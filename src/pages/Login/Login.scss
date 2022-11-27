@@ -1,0 +1,31 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.login {
+  &__form {
+    @include media-tablet {
+      width: $max-width-form;
+      margin: auto;
+    }
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__text {
+    width: fit-content;
+    margin: auto;
+  }
+
+  &__link {
+    font-weight: 700;
+    color: $table-tennis-white;
+  }
+}

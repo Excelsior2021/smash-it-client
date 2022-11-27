@@ -1,0 +1,19 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.stats-table-record {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+
+  &__field {
+    @include table-field-layout(45px);
+
+    &--username {
+      position: sticky;
+      left: 0;
+      background-color: $table-tennis-blue-highlight;
+      border-right: 1px solid $table-tennis-white;
+    }
+  }
+}

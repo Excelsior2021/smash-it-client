@@ -1,0 +1,48 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.nav {
+  text-align: center;
+  background-color: $table-tennis-blue-dark;
+  position: absolute;
+  right: 0;
+  margin-top: $padding-mobile;
+
+  @include media-tablet {
+    position: static;
+    display: flex;
+    margin-top: 0;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $table-tennis-white;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+
+    &--active {
+      color: $table-tennis-orange;
+    }
+
+    @include media-tablet {
+      width: fit-content;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    text-transform: capitalize;
+    list-style: none;
+    border-top: 1px solid $table-tennis-white;
+    width: 130px;
+    height: 80px;
+
+    @include media-tablet {
+      border: none;
+    }
+  }
+}
