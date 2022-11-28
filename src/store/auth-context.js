@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = React.createContext({
   isLoggedIn: null,

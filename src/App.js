@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
@@ -12,14 +11,12 @@ import Group from "./pages/Group/Group";
 import JoinCreateGroup from "./pages/JoinCreateGroup/JoinCreateGroup";
 import JoinGroup from "./pages/JoinGroup/JoinGroup";
 import CreateGroup from "./pages/CreateGroup/CreateGroup";
-import AuthContext from "./store/auth-context";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
 import LoggedInRedirect from "./components/LoggedInRedirect/LoggedInRedirect";
 import RecordMatch from "./pages/RecordMatch/RecordMatch";
 import ModerateGroup from "./pages/ModerateGroup/ModerateGroup";
 
 const App = () => {
-  const authCtx = useContext(AuthContext);
   return (
     <>
       <Header />

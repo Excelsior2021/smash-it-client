@@ -27,12 +27,11 @@ const JoinGroup = () => {
         searchGroupsTerm.joinGroup &&
         searchGroupsTerm.joinGroup.trim().length > 0 && (
           <ul className="join-group__filtered-groups">
-            {mainCtx.allGroups.map(group => {
-              if (group.groupName.includes(searchGroupsTerm.joinGroup))
-                return (
-                  <GroupSearchItem key={group.id} groupName={group.groupName} />
-                );
-            })}
+            {mainCtx.allGroups.map(group =>
+              group.groupName.includes(searchGroupsTerm.joinGroup) ? (
+                <GroupSearchItem key={group.id} groupName={group.groupName} />
+              ) : null
+            )}
           </ul>
         )}
     </div>

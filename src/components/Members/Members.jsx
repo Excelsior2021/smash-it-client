@@ -3,7 +3,7 @@ import MainContext from "../../store/main-context";
 import MemberItem from "../MemberItem/MemberItem";
 import "./Members.scss";
 
-const Members = ({}) => {
+const Members = () => {
   const mainCtx = useContext(MainContext);
 
   return (

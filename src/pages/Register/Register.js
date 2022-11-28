@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { isFormValid } from "../../utils/helpers";
 import MainContext from "../../store/main-context";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
