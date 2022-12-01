@@ -5,15 +5,15 @@ import Input from "../../components/Input/Input";
 import "./CreateGroup.scss";
 
 const CreateGroup = () => {
-  const [newGroup, setNewGroup] = useState({ groupName: "" });
-  const [newGroupValid, setNewGroupValid] = useState({ groupName: null });
+  const [newGroup, setNewGroup] = useState(null);
+  const [newGroupValid, setNewGroupValid] = useState(null);
   const [newGroupNameValid, setNewGroupNameValid] = useState(null);
   const mainCtx = useContext(MainContext);
 
   const handleSubmitGroup = async event => {
     event.preventDefault();
     await mainCtx.isGroupValid(
-      newGroup,
+      newGroup.groupName,
       setNewGroupValid,
       setNewGroupNameValid
     );
@@ -29,7 +29,7 @@ const CreateGroup = () => {
             label="group name"
             name="groupName"
             setFormState={setNewGroup}
-            valid={newGroupValid.groupName}
+            valid={newGroupValid}
             newGroupNameValid={newGroupNameValid}
           />
         </div>

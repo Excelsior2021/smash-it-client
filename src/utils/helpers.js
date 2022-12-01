@@ -49,9 +49,8 @@ export const isPasswordCheckValid = (
 
 export const isGroupNameValid = (group, groups, setGroupNameValid) => {
   let validity = true;
-  const { groupName } = group;
   groups.forEach(group => {
-    if (group.groupName === groupName) validity = false;
+    if (group.groupName === group) validity = false;
   });
   setGroupNameValid(validity);
   return validity;

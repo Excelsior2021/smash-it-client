@@ -24,6 +24,7 @@ const App = () => {
         <Routes>
           <Route element={<LoggedInRedirect />}>
             <Route path="/" element={<Home />} />
+            <Route path="/smash-it" element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="about" element={<About />} />
