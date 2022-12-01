@@ -1,4 +1,4 @@
-# smash-it
+# Smash It!
 
 Performance tracking for table tennis. This is a full-stack JavaScript application with a MySQL database.
 
