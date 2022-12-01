@@ -22,16 +22,34 @@ const JoinGroup = () => {
           type="search"
           setFormState={setSearchGroupsTerm}
         />
+        <p className="join-group__hint">
+          hint: try searching for smashers or type "*" to see all avalable
+          groups
+        </p>
       </form>
       {mainCtx.allGroups &&
         searchGroupsTerm.joinGroup &&
         searchGroupsTerm.joinGroup.trim().length > 0 && (
           <ul className="join-group__filtered-groups">
-            {mainCtx.allGroups.map(group =>
-              group.groupName.includes(searchGroupsTerm.joinGroup) ? (
-                <GroupSearchItem key={group.id} groupName={group.groupName} />
-              ) : null
-            )}
+            {searchGroupsTerm.joinGroup === "*"
+              ? mainCtx.allGroups
+                  .map(group => (
+                    <GroupSearchItem
+                      key={group.id}
+                      groupName={group.groupName}
+                    />
+                  ))
+                  .sort((a, b) =>
+                    a.props.groupName.localeCompare(b.props.groupName)
+                  )
+              : mainCtx.allGroups.map(group =>
+                  group.groupName.includes(searchGroupsTerm.joinGroup) ? (
+                    <GroupSearchItem
+                      key={group.id}
+                      groupName={group.groupName}
+                    />
+                  ) : null
+                )}
           </ul>
         )}
     </div>

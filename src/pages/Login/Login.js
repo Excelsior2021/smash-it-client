@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import MainContext from "../../store/main-context";
+import Demo from "../../components/Demo/Demo";
 import "./Login.scss";
 
 const Login = () => {
@@ -17,13 +18,20 @@ const Login = () => {
     password: null,
   });
 
+  const [loginInvalid, setLoginInvalid] = useState(false);
+
   return (
     <div className="login">
       <h1>Login to your account</h1>
       <form
         className="login__form"
         onSubmit={event =>
-          mainCtx.getLoginData(event, loginFormState, setLoginFormValid)
+          mainCtx.getLoginData(
+            event,
+            loginFormState,
+            setLoginFormValid,
+            setLoginInvalid
+          )
         }
       >
         <div className="login__inputs">
@@ -43,6 +51,11 @@ const Login = () => {
             valid={loginFormValid.password}
           />
         </div>
+        {loginInvalid && (
+          <p className="input__invalid">
+            please check your username or password, something is not right
+          </p>
+        )}
         <div className="login__actions">
           <Button type="login">Login</Button>
         </div>

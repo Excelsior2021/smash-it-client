@@ -38,8 +38,8 @@ const CreateGroup = () => {
         </div>
       </form>
       <p className="create-group__text">
-        when you create a group, you'll automatically become an admin member, to
-        be able to manage the group.
+        when you create a group, you'll automatically become admin, in order to
+        manage the group.
       </p>
     </div>
   );

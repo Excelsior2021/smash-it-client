@@ -2,8 +2,18 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
+html {
+  @include scrollbars-custom;
+}
+
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.demo {
+  // margin-top: 50px;
+  font-size: 2rem;
+  text-align: center;
 }

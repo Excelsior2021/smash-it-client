@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import MainContext from "../../store/main-context";
-import { addMemberToGroup, getUserGroups } from "../../utils/api";
 import Button from "../Button/Button";
 import "./GroupSearchItem.scss";
 
@@ -10,8 +9,7 @@ const GroupSearchItem = ({ groupName }) => {
 
   const handleClick = async () => {
     setButtonClicked(true);
-    await addMemberToGroup(mainCtx.user.username, groupName);
-    mainCtx.setUserGroups(await getUserGroups(mainCtx.user.username));
+    mainCtx.updateCurrentGroup(mainCtx.user.username, groupName);
   };
 
   return (

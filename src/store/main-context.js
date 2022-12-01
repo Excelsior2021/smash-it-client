@@ -11,6 +11,7 @@ import {
   createAccount,
   getAllGroups,
   getGroupStats,
+  addMemberToGroup,
 } from "../utils/api";
 import {
   isFormValid,
@@ -34,7 +35,7 @@ const MainContext = React.createContext({
   getProfileData: username => {},
   getAllGroupsData: () => {},
   getMembersData: groupName => {},
-  setUserGroups: userGroups => {},
+  updateCurrentGroup: (username, groupName) => {},
   setCurrentGroupStats: currentGroupStats => {},
   sortGroupStats: field => {},
   changeGroup: groupName => {},
@@ -72,6 +73,19 @@ export const MainContextProvider = ({ children }) => {
     );
   }, []);
 
+  useEffect(() => {
+    if (!authCtx.isLoggedIn) {
+      setUser(null);
+      setAdmin(null);
+      setProfile(null);
+      setMembers(null);
+      setAllGroups(null);
+      setUserGroups(null);
+      setCurrentGroup(null);
+      setCurrentGroupStats(null);
+    }
+  }, [authCtx]);
+
   const getProfileData = async (username, groupName) =>
     setProfile(await getProfile(username, groupName));
 
@@ -87,6 +101,13 @@ export const MainContextProvider = ({ children }) => {
     await getProfileData(username, groupName);
     setCurrentGroupStats(await getGroupStats(groupName));
     if (page === "group") navigate(`/group/${groupName}`);
+  };
+
+  const updateCurrentGroup = async (username, groupName) => {
+    await addMemberToGroup(username, groupName);
+    setUserGroups(await getUserGroups(username));
+    setCurrentGroup(groupName);
+    changeGroup(username, groupName);
   };
 
   const sortGroupStats = (field, reverse) => {
@@ -124,23 +145,31 @@ export const MainContextProvider = ({ children }) => {
     }
   };
 
-  const getLoginData = async (event, loginFormData, setFormValid) => {
+  const getLoginData = async (
+    event,
+    loginFormData,
+    setFormValid,
+    setLoginInvalid
+  ) => {
     event.preventDefault();
     if (isFormValid(loginFormData, setFormValid)) {
       const data = await login(loginFormData);
-      localStorage.setItem("token", data.token);
-      getSessionData(
-        data,
-        setUser,
-        setCurrentGroup,
-        getMembersData,
-        setUserGroups,
-        setCurrentGroupStats,
-        getAllGroupsData,
-        setAdmin,
-        authCtx.login
-      );
-      navigate(`/${user.username}/dashboard`);
+      if (!data) {
+        setLoginInvalid(true);
+      } else {
+        localStorage.setItem("token", data.token);
+        await getSessionData(
+          data,
+          setUser,
+          setCurrentGroup,
+          getMembersData,
+          setUserGroups,
+          setCurrentGroupStats,
+          getAllGroupsData,
+          setAdmin,
+          authCtx.login
+        );
+      }
     }
   };
 
@@ -180,6 +209,7 @@ export const MainContextProvider = ({ children }) => {
       localStorage.setItem("token", data.token);
       setUser(data);
       authCtx.login();
+      getAllGroupsData();
       navigate(`${data.username}/join-create`);
     }
   };
@@ -198,7 +228,7 @@ export const MainContextProvider = ({ children }) => {
         getProfileData,
         getAllGroupsData,
         getMembersData,
-        setUserGroups,
+        updateCurrentGroup,
         setCurrentGroupStats,
         sortGroupStats,
         changeGroup,

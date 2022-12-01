@@ -54,21 +54,22 @@ const Input = ({
             : ""
         }
       />
-      {(form === "register" || form === "create-group") &&
-        !valid &&
-        valid !== null &&
-        name !== "dob" && (
-          <p className="input__invalid">field can not be empty</p>
-        )}
       {form === "login" && !valid && valid !== null && name === "username" && (
         <p className="input__invalid">please enter your username</p>
       )}
       {form === "login" && !valid && valid !== null && name === "password" && (
         <p className="input__invalid">please enter your password</p>
       )}
+
       {!valid && valid !== null && name === "dob" && (
         <p className="input__invalid">please choose your date of birth</p>
       )}
+      {(form === "register" || form === "create-group") &&
+        !valid &&
+        valid !== null &&
+        name !== "dob" && (
+          <p className="input__invalid">field can not be empty</p>
+        )}
       {form === "register" &&
         valid &&
         !usernameValid &&

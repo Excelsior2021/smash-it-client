@@ -54,7 +54,7 @@ const RecordMatch = () => {
     setSuccessfulSubmit(false);
   }, [scores]);
 
-  useEffect(() => setChosenMember(null), [mainCtx.members]);
+  useEffect(() => setChosenMember(null), []);
 
   return (
     <>

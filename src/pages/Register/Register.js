@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MainContext from "../../store/main-context";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
+import Demo from "../../components/Demo/Demo";
 import "./Register.scss";
 
 const Register = () => {
