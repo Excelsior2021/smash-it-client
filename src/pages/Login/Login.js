@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import MainContext from "../../store/main-context";
-import Demo from "../../components/Demo/Demo";
 import "./Login.scss";
 
 const Login = () => {

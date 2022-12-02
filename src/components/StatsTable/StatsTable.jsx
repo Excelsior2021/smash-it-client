@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import MainContext from "../../store/main-context";
 import StatsTableRecord from "../StatsTableRecord/StatsTableRecord";
 import sort from "../../assets/icons/sort.svg";

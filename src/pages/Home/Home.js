@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import Button from "../../components/Button/Button";
 import AuthContext from "../../store/auth-context";
-import Demo from "../../components/Demo/Demo";
 import "./Home.scss";
 
 const Home = () => {
