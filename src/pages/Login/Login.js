@@ -60,7 +60,7 @@ const Login = () => {
         </div>
         <p className="login__text">
           No account? You can register{" "}
-          <Link to={`/${mainCtx.baseURL}/register`} className="login__link">
+          <Link to="/register" className="login__link">
             here
           </Link>
         </p>

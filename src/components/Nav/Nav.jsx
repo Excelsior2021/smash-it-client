@@ -14,7 +14,7 @@ const Nav = ({ setShowMenu }) => {
           <>
             <li className="nav__item">
               <NavLink
-                to={`${mainCtx.baseURL}/login`}
+                to="/login"
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
                 }
@@ -24,7 +24,7 @@ const Nav = ({ setShowMenu }) => {
             </li>
             <li className="nav__item">
               <NavLink
-                to={`${mainCtx.baseURL}/register`}
+                to="/register"
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
                 }
@@ -34,7 +34,7 @@ const Nav = ({ setShowMenu }) => {
             </li>
             <li className="nav__item">
               <NavLink
-                to={`${mainCtx.baseURL}/about`}
+                to="/about"
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
                 }
@@ -48,7 +48,7 @@ const Nav = ({ setShowMenu }) => {
           <>
             <li className="nav__item">
               <NavLink
-                to={`${mainCtx.baseURL}/${mainCtx.user.username}/dashboard`}
+                to={`/${mainCtx.user.username}/dashboard`}
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
                 }
@@ -59,7 +59,7 @@ const Nav = ({ setShowMenu }) => {
 
             <li className="nav__item">
               <NavLink
-                to={`${mainCtx.baseURL}/${mainCtx.user.username}/profile`}
+                to={`/${mainCtx.user.username}/profile`}
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
                 }
@@ -70,7 +70,7 @@ const Nav = ({ setShowMenu }) => {
 
             <li className="nav__item">
               <NavLink
-                to={`${mainCtx.baseURL}/group/${mainCtx.currentGroup}`}
+                to={`/group/${mainCtx.currentGroup}`}
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
                 }

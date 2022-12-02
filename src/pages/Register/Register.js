@@ -117,7 +117,7 @@ const Register = () => {
         </div>
         <p className="register__text">
           Already have an account? You can login{" "}
-          <Link to={`/${mainCtx.baseURL}/login`} className="register__link">
+          <Link to="/login" className="register__link">
             here
           </Link>
         </p>

@@ -31,7 +31,6 @@ const MainContext = React.createContext({
   currentGroup: null,
   userGroups: null,
   currentGroupStats: null,
-  baseURL: null,
   getProfileData: username => {},
   getAllGroupsData: () => {},
   getMembersData: groupName => {},
@@ -56,7 +55,6 @@ export const MainContextProvider = ({ children }) => {
 
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
-  const baseURL = "smash-it";
 
   //checks if client has token and auththenticates token on the server.
   //if client is authenticated, client is automatically logged in.
@@ -104,7 +102,7 @@ export const MainContextProvider = ({ children }) => {
     await getMembersData(groupName, username);
     await getProfileData(username, groupName);
     setCurrentGroupStats(await getGroupStats(groupName));
-    if (page === "group") navigate(`${baseURL}/group/${groupName}`);
+    if (page === "group") navigate(`/group/${groupName}`);
   };
 
   const updateCurrentGroup = async (username, groupName) => {
@@ -154,7 +152,7 @@ export const MainContextProvider = ({ children }) => {
     ) {
       await addNewGroup(user.username, newGroup.groupName);
       await updateCurrentGroup(user.username, newGroup.groupName);
-      navigate(`${baseURL}/group/${newGroup.groupName}`);
+      navigate(`/group/${newGroup.groupName}`);
     }
   };
 
@@ -223,7 +221,7 @@ export const MainContextProvider = ({ children }) => {
       setUser(data);
       authCtx.login();
       getAllGroupsData();
-      navigate(`${baseURL}/${data.username}/join-create`);
+      navigate(`/${data.username}/join-create`);
     }
   };
 
@@ -238,7 +236,6 @@ export const MainContextProvider = ({ children }) => {
         currentGroup,
         userGroups,
         currentGroupStats,
-        baseURL,
         getProfileData,
         getAllGroupsData,
         getMembersData,

@@ -24,9 +24,7 @@ const Group = () => {
               <Button
                 type="moderate-group"
                 click={() =>
-                  navigate(
-                    `/${mainCtx.baseURL}/group/${mainCtx.currentGroup}/moderate`
-                  )
+                  navigate(`/group/${mainCtx.currentGroup}/moderate`)
                 }
               >
                 moderate group

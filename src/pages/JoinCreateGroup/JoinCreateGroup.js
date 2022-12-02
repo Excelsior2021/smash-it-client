@@ -14,17 +14,13 @@ const JoinCreateGroup = () => {
       <div className="join-create__actions">
         <Button
           type="join-create"
-          click={() =>
-            navigate(`/${mainCtx.baseURL}/${mainCtx.user.username}/join`)
-          }
+          click={() => navigate(`/${mainCtx.user.username}/join`)}
         >
           join a group
         </Button>
         <Button
           type="join-create"
-          click={() =>
-            navigate(`/${mainCtx.baseURL}/${mainCtx.user.username}/create`)
-          }
+          click={() => navigate(`/${mainCtx.user.username}/create`)}
         >
           create a new group
         </Button>
