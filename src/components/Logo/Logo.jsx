@@ -11,7 +11,11 @@ const Logo = () => {
   return (
     <div className="logo">
       <Link
-        to={authCtx.isLoggedIn ? `/${mainCtx.user.username}/dashboard` : "/"}
+        to={
+          authCtx.isLoggedIn
+            ? `${mainCtx.baseURL}/${mainCtx.user.username}/dashboard`
+            : `${mainCtx.baseURL}`
+        }
       >
         <img src={logo} alt="logo" className="logo__img" />
       </Link>

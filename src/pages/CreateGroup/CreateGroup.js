@@ -19,6 +19,8 @@ const CreateGroup = () => {
     );
   };
 
+  console.log(newGroupValid, newGroupNameValid);
+
   return (
     <div className="create-group">
       <h1 className="create-group__heading">create a new group</h1>

@@ -7,7 +7,7 @@ const LoggedInRedirect = () => {
   const authCtx = useContext(AuthContext);
   const mainCtx = useContext(MainContext);
   return authCtx.isLoggedIn ? (
-    <Navigate to={`/${mainCtx.user.username}/dashboard`} />
+    <Navigate to={`${mainCtx.baseURL}/${mainCtx.user.username}/dashboard`} />
   ) : (
     <Outlet />
   );

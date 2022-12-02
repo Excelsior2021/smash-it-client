@@ -17,7 +17,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     await localStorage.removeItem("token");
-    navigate("/");
+    navigate(`/smash-it`);
     setIsLoggeIn(false);
   };
 

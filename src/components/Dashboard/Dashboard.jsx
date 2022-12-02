@@ -25,14 +25,22 @@ const Dashboard = () => {
           <div className="dashboard__actions">
             <Button
               type="record-match"
-              click={() => navigate(`/${mainCtx.user.username}/record-match`)}
+              click={() =>
+                navigate(
+                  `/${mainCtx.baseURL}/${mainCtx.user.username}/record-match`
+                )
+              }
             >
               record match
             </Button>
             <Button
               type="join-create"
               modifier="dashboard"
-              click={() => navigate(`/${mainCtx.user.username}/join-create`)}
+              click={() =>
+                navigate(
+                  `/${mainCtx.baseURL}/${mainCtx.user.username}/join-create`
+                )
+              }
             >
               join or create new group
             </Button>
