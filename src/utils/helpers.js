@@ -85,7 +85,9 @@ export const getSessionData = async (
   );
   await getAllGroupsData();
   login();
-  data.groups[0].admin ? setAdmin(true) : setAdmin(false);
+  if (data.groups.length > 0) {
+    data.groups[0].admin ? setAdmin(true) : setAdmin(false);
+  }
 };
 
 //checks if user is authenticated with a token to persist the session
