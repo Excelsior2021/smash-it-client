@@ -68,12 +68,15 @@ export const getSessionData = async (
   setUserGroups,
   setCurrentGroupStats,
   getAllGroupsData,
-  setAdmin,
-  login
+  login,
+  setAdmin
 ) => {
   setUser(data);
   setCurrentGroup(data.groups.length > 0 ? data.groups[0].groupName : null);
-  getMembersData(data.groups.length > 0 ? data.groups[0].groupName : null);
+  getMembersData(
+    data.groups.length > 0 ? data.groups[0].groupName : null,
+    data.username
+  );
   setUserGroups(await getUserGroups(data.username));
   setCurrentGroupStats(
     await getGroupStats(
@@ -81,10 +84,8 @@ export const getSessionData = async (
     )
   );
   await getAllGroupsData();
-  setAdmin(
-    data.groups.length > 0 ? (data.groups[0].admin ? true : false) : null
-  );
   login();
+  data.groups[0].admin ? setAdmin(true) : setAdmin(false);
 };
 
 //checks if user is authenticated with a token to persist the session
@@ -95,8 +96,8 @@ export const checkAuthentication = async (
   setUserGroups,
   setCurrentGroupStats,
   getAllGroupsData,
-  setAdmin,
-  login
+  login,
+  setAdmin
 ) => {
   if (localStorage.token) {
     const data = await authenticate();
@@ -108,8 +109,8 @@ export const checkAuthentication = async (
       setUserGroups,
       setCurrentGroupStats,
       getAllGroupsData,
-      setAdmin,
-      login
+      login,
+      setAdmin
     );
   }
 };

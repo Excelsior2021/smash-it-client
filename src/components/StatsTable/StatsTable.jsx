@@ -20,7 +20,6 @@ const fields = [
 ];
 
 const StatsTable = () => {
-  const [reRender, setReRender] = useState(false);
   const [fieldNameState, setFieldNameState] = useState(null);
   const [sortReverse, setSortReverse] = useState(false);
   const mainCtx = useContext(MainContext);
@@ -30,8 +29,6 @@ const StatsTable = () => {
       ? event.target.name
       : event.target.innerText;
 
-    console.log(fieldNameState, fieldName, sortReverse);
-    console.log(event.target.name);
     setFieldNameState(fieldName);
 
     fieldName === fieldNameState
@@ -39,7 +36,6 @@ const StatsTable = () => {
       : setSortReverse(false);
 
     mainCtx.sortGroupStats(fieldName, sortReverse);
-    setReRender(prevState => !prevState);
   };
 
   return (

@@ -17,7 +17,7 @@ const Group = () => {
     <div className="group">
       {mainCtx.currentGroup ? (
         <>
-          <SwitchGroup type="group" />
+          <SwitchGroup username={mainCtx.user.username} type="group" />
           <h1 className="group__heading">{mainCtx.currentGroup}</h1>
           <div className="group__actions">
             {mainCtx.admin && (

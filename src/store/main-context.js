@@ -11,7 +11,6 @@ import {
   createAccount,
   getAllGroups,
   getGroupStats,
-  addMemberToGroup,
 } from "../utils/api";
 import {
   isFormValid,
@@ -68,8 +67,8 @@ export const MainContextProvider = ({ children }) => {
       setUserGroups,
       setCurrentGroupStats,
       getAllGroupsData,
-      setAdmin,
-      authCtx.login
+      authCtx.login,
+      setAdmin
     );
   }, []);
 
@@ -91,13 +90,16 @@ export const MainContextProvider = ({ children }) => {
 
   const getAllGroupsData = async () => setAllGroups(await getAllGroups());
 
-  const getMembersData = async groupName => {
-    setMembers(await getMembers(groupName));
+  const getMembersData = async (groupName, username) => {
+    const members = await getMembers(groupName);
+    setMembers(members);
+    checkAdmin(members, username);
+    setCurrentGroupStats(await getGroupStats(groupName));
   };
 
   const changeGroup = async (username, groupName, page) => {
     setCurrentGroup(groupName);
-    await getMembersData(groupName);
+    await getMembersData(groupName, username);
     await getProfileData(username, groupName);
     setCurrentGroupStats(await getGroupStats(groupName));
     if (page === "group") navigate(`/group/${groupName}`);
@@ -107,6 +109,17 @@ export const MainContextProvider = ({ children }) => {
     setUserGroups(await getUserGroups(username));
     setCurrentGroup(groupName);
     changeGroup(username, groupName);
+  };
+
+  const checkAdmin = (members, username) => {
+    for (const member of members) {
+      if (member.username === username && member.admin) {
+        setAdmin(true);
+        break;
+      } else {
+        setAdmin(false);
+      }
+    }
   };
 
   const sortGroupStats = (field, reverse) => {
@@ -164,8 +177,8 @@ export const MainContextProvider = ({ children }) => {
           setUserGroups,
           setCurrentGroupStats,
           getAllGroupsData,
-          setAdmin,
-          authCtx.login
+          authCtx.login,
+          setAdmin
         );
       }
     }
