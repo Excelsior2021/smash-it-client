@@ -2,8 +2,6 @@ import profileImg from "../../assets/images/default-profile-image.png";
 import removeUser from "../../assets/icons/remove-user.png";
 import { Link } from "react-router-dom";
 import "./MemberItem.scss";
-import { useContext } from "react";
-import MainContext from "../../store/main-context";
 
 const MemberItemBase = ({ member, type }) => (
   <>
@@ -19,12 +17,11 @@ const MemberItemBase = ({ member, type }) => (
 );
 
 const MemberItem = ({ member, index, type, click }) => {
-  const mainCtx = useContext(MainContext);
   return (
     <li className={type ? `member member--${type}` : "member"}>
       {type === "leaderboard" && (
         <Link
-          to={`/${mainCtx.baseURL}/${member.username}/profile`}
+          to={`/${member.username}/profile`}
           className={
             type ? `member__link member__link--${type}` : "member__link"
           }
@@ -36,10 +33,7 @@ const MemberItem = ({ member, index, type, click }) => {
       )}
 
       {type === "members" && (
-        <Link
-          to={`/${mainCtx.baseURL}/${member.username}/profile`}
-          className="member__link"
-        >
+        <Link to={`/${member.username}/profile`} className="member__link">
           <MemberItemBase member={member} />
         </Link>
       )}
