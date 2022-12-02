@@ -47,10 +47,10 @@ export const isPasswordCheckValid = (
   return true;
 };
 
-export const isGroupNameValid = (group, groups, setGroupNameValid) => {
+export const isGroupNameValid = (newGroup, groups, setGroupNameValid) => {
   let validity = true;
   groups.forEach(group => {
-    if (group.groupName === group) validity = false;
+    if (group.groupName === newGroup.groupName) validity = false;
   });
   setGroupNameValid(validity);
   return validity;

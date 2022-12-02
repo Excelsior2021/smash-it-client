@@ -104,7 +104,7 @@ export const MainContextProvider = ({ children }) => {
     await getMembersData(groupName, username);
     await getProfileData(username, groupName);
     setCurrentGroupStats(await getGroupStats(groupName));
-    if (page === "group") navigate(`/group/${groupName}`);
+    if (page === "group") navigate(`${baseURL}/group/${groupName}`);
   };
 
   const updateCurrentGroup = async (username, groupName) => {
@@ -152,8 +152,8 @@ export const MainContextProvider = ({ children }) => {
       isFormValid(newGroup, setNewGroupValid) &&
       isGroupNameValid(newGroup, groups, setNewGroupNameValid)
     ) {
-      await addNewGroup(user.username, newGroup);
-      await updateCurrentGroup(user.username, newGroup);
+      await addNewGroup(user.username, newGroup.groupName);
+      await updateCurrentGroup(user.username, newGroup.groupName);
       navigate(`${baseURL}/group/${newGroup.groupName}`);
     }
   };

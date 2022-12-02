@@ -6,20 +6,18 @@ import "./CreateGroup.scss";
 
 const CreateGroup = () => {
   const [newGroup, setNewGroup] = useState(null);
-  const [newGroupValid, setNewGroupValid] = useState(null);
+  const [newGroupValid, setNewGroupValid] = useState({ groupName: null });
   const [newGroupNameValid, setNewGroupNameValid] = useState(null);
   const mainCtx = useContext(MainContext);
 
   const handleSubmitGroup = async event => {
     event.preventDefault();
     await mainCtx.isGroupValid(
-      newGroup.groupName,
+      newGroup,
       setNewGroupValid,
       setNewGroupNameValid
     );
   };
-
-  console.log(newGroupValid, newGroupNameValid);
 
   return (
     <div className="create-group">
@@ -31,7 +29,7 @@ const CreateGroup = () => {
             label="group name"
             name="groupName"
             setFormState={setNewGroup}
-            valid={newGroupValid}
+            valid={newGroupValid.groupName}
             newGroupNameValid={newGroupNameValid}
           />
         </div>
