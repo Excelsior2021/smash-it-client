@@ -13,10 +13,10 @@ const Home = () => {
     <div className="home__landing">
       <h1 className="home__slogan">Performance tracking for table tennis.</h1>
       <div className="home__actions">
-        <Button type="home" click={() => navigate(`login`)}>
+        <Button type="home" click={() => navigate("/login")}>
           Login
         </Button>
-        <Button type="home" click={() => navigate(`register`)}>
+        <Button type="home" click={() => navigate("/register")}>
           Register
         </Button>
       </div>
