@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "./auth-context";
 import {
@@ -43,7 +43,7 @@ const MainContext = React.createContext({
   createAccountHandler: (event, registerFormData) => {},
 });
 
-export const MainContextProvider = ({ children }) => {
+const MainContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [admin, setAdmin] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -165,6 +165,7 @@ export const MainContextProvider = ({ children }) => {
     event.preventDefault();
     if (isFormValid(loginFormData, setFormValid)) {
       const data = await login(loginFormData);
+      console.log(data);
       if (!data) {
         setLoginInvalid(true);
       } else {
@@ -254,3 +255,4 @@ export const MainContextProvider = ({ children }) => {
 };
 
 export default MainContext;
+export { MainContextProvider };

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import MainContext from "../../store/main-context";
 import "./SwitchGroup.scss";
 
@@ -9,7 +9,7 @@ const SwitchGroup = ({ username, type }) => {
     mainCtx.changeGroup(username, event.target.value, type);
 
   return (
-    <div className={`switch switch--${type}`}>
+    <div className={`switch`}>
       {mainCtx.userGroups && (
         <select
           className="switch__select"
@@ -28,4 +28,4 @@ const SwitchGroup = ({ username, type }) => {
   );
 };
 
-export default SwitchGroup;
+export default memo(SwitchGroup);
