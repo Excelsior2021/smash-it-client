@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext, memo } from "react";
-import { useNavigate } from "react-router-dom";
-import AuthContext from "./auth-context";
+import React, { useState, useEffect, useContext, memo } from "react"
+import { useNavigate } from "react-router-dom"
+import AuthContext from "./auth-context"
 import {
   getUsers,
   getProfile,
@@ -11,7 +11,7 @@ import {
   createAccount,
   getAllGroups,
   getGroupStats,
-} from "../utils/api";
+} from "../utils/api"
 import {
   isFormValid,
   isUsernameValid,
@@ -20,7 +20,7 @@ import {
   getSessionData,
   checkAuthentication,
   isGroupNameValid,
-} from "../utils/helpers";
+} from "../utils/helpers"
 
 const MainContext = React.createContext({
   user: null,
@@ -41,20 +41,20 @@ const MainContext = React.createContext({
   isGroupValid: (newGroup, setNewGroupValid) => {},
   getLoginData: (event, loginFormData) => {},
   createAccountHandler: (event, registerFormData) => {},
-});
+})
 
 const MainContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [admin, setAdmin] = useState(null);
-  const [profile, setProfile] = useState(null);
-  const [members, setMembers] = useState(null);
-  const [allGroups, setAllGroups] = useState(null);
-  const [userGroups, setUserGroups] = useState(null);
-  const [currentGroup, setCurrentGroup] = useState(null);
-  const [currentGroupStats, setCurrentGroupStats] = useState(null);
+  const [user, setUser] = useState(null)
+  const [admin, setAdmin] = useState(null)
+  const [profile, setProfile] = useState(null)
+  const [members, setMembers] = useState(null)
+  const [allGroups, setAllGroups] = useState(null)
+  const [userGroups, setUserGroups] = useState(null)
+  const [currentGroup, setCurrentGroup] = useState(null)
+  const [currentGroupStats, setCurrentGroupStats] = useState(null)
 
-  const authCtx = useContext(AuthContext);
-  const navigate = useNavigate();
+  const authCtx = useContext(AuthContext)
+  const navigate = useNavigate()
 
   //checks if client has token and auththenticates token on the server.
   //if client is authenticated, client is automatically logged in.
@@ -69,58 +69,58 @@ const MainContextProvider = ({ children }) => {
       getAllGroupsData,
       authCtx.login,
       setAdmin
-    );
-  }, []);
+    )
+  }, [])
 
   useEffect(() => {
     if (!authCtx.isLoggedIn) {
-      setUser(null);
-      setAdmin(null);
-      setProfile(null);
-      setMembers(null);
-      setAllGroups(null);
-      setUserGroups(null);
-      setCurrentGroup(null);
-      setCurrentGroupStats(null);
+      setUser(null)
+      setAdmin(null)
+      setProfile(null)
+      setMembers(null)
+      setAllGroups(null)
+      setUserGroups(null)
+      setCurrentGroup(null)
+      setCurrentGroupStats(null)
     }
-  }, [authCtx]);
+  }, [authCtx])
 
   const getProfileData = async (username, groupName) =>
-    setProfile(await getProfile(username, groupName));
+    setProfile(await getProfile(username, groupName))
 
-  const getAllGroupsData = async () => setAllGroups(await getAllGroups());
+  const getAllGroupsData = async () => setAllGroups(await getAllGroups())
 
   const getMembersData = async (groupName, username) => {
-    const members = await getMembers(groupName);
-    setMembers(members);
-    checkAdmin(members, username);
-    setCurrentGroupStats(await getGroupStats(groupName));
-  };
+    const members = await getMembers(groupName)
+    setMembers(members)
+    checkAdmin(members, username)
+    setCurrentGroupStats(await getGroupStats(groupName))
+  }
 
   const changeGroup = async (username, groupName, page) => {
-    setCurrentGroup(groupName);
-    await getMembersData(groupName, username);
-    await getProfileData(username, groupName);
-    setCurrentGroupStats(await getGroupStats(groupName));
-    if (page === "group") navigate(`/group/${groupName}`);
-  };
+    setCurrentGroup(groupName)
+    await getMembersData(groupName, username)
+    await getProfileData(username, groupName)
+    setCurrentGroupStats(await getGroupStats(groupName))
+    if (page === "group") navigate(`/group/${groupName}`)
+  }
 
   const updateCurrentGroup = async (username, groupName) => {
-    setUserGroups(await getUserGroups(username));
-    setCurrentGroup(groupName);
-    changeGroup(username, groupName);
-  };
+    setUserGroups(await getUserGroups(username))
+    setCurrentGroup(groupName)
+    changeGroup(username, groupName)
+  }
 
   const checkAdmin = (members, username) => {
     for (const member of members) {
       if (member.username === username && member.admin) {
-        setAdmin(true);
-        break;
+        setAdmin(true)
+        break
       } else {
-        setAdmin(false);
+        setAdmin(false)
       }
     }
-  };
+  }
 
   const sortGroupStats = (field, reverse) => {
     if (field === "username") {
@@ -130,31 +130,31 @@ const MainContextProvider = ({ children }) => {
             ? b.username.localeCompare(a.username)
             : a.username.localeCompare(b.username)
         )
-      );
-      return;
+      )
+      return
     }
     setCurrentGroupStats(prevState =>
       prevState.sort((a, b) =>
         reverse ? a[field] - b[field] : b[field] - a[field]
       )
-    );
-  };
+    )
+  }
 
   const isGroupValid = async (
     newGroup,
     setNewGroupValid,
     setNewGroupNameValid
   ) => {
-    const groups = await getAllGroups();
+    const groups = await getAllGroups()
     if (
       isFormValid(newGroup, setNewGroupValid) &&
       isGroupNameValid(newGroup, groups, setNewGroupNameValid)
     ) {
-      await addNewGroup(user.username, newGroup.groupName);
-      await updateCurrentGroup(user.username, newGroup.groupName);
-      navigate(`/group/${newGroup.groupName}`);
+      await addNewGroup(user.username, newGroup.groupName)
+      await updateCurrentGroup(user.username, newGroup.groupName)
+      navigate(`/group/${newGroup.groupName}`)
     }
-  };
+  }
 
   const getLoginData = async (
     event,
@@ -162,14 +162,13 @@ const MainContextProvider = ({ children }) => {
     setFormValid,
     setLoginInvalid
   ) => {
-    event.preventDefault();
+    event.preventDefault()
     if (isFormValid(loginFormData, setFormValid)) {
-      const data = await login(loginFormData);
-      console.log(data);
+      const data = await login(loginFormData)
       if (!data) {
-        setLoginInvalid(true);
+        setLoginInvalid(true)
       } else {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data.token)
         await getSessionData(
           data,
           setUser,
@@ -180,10 +179,10 @@ const MainContextProvider = ({ children }) => {
           getAllGroupsData,
           authCtx.login,
           setAdmin
-        );
+        )
       }
     }
-  };
+  }
 
   const createAccountHandler = async (
     event,
@@ -193,38 +192,38 @@ const MainContextProvider = ({ children }) => {
     setPasswordValid,
     setPasswordCheckValid
   ) => {
-    event.preventDefault();
-    const usersData = await getUsers();
+    event.preventDefault()
+    const usersData = await getUsers()
 
-    const formValid = isFormValid(registerFormData, setFormValid, usersData);
+    const formValid = isFormValid(registerFormData, setFormValid, usersData)
     const usernameValid = isUsernameValid(
       registerFormData.username,
       usersData,
       setUsernameValid
-    );
+    )
     const passwordValid = isPasswordValid(
       registerFormData.password,
       setPasswordValid
-    );
+    )
     const passwordCheckValid = isPasswordCheckValid(
       registerFormData.password,
       registerFormData.passwordCheck,
       setPasswordCheckValid
-    );
+    )
 
     if (formValid && usernameValid && passwordValid && passwordCheckValid) {
-      await createAccount(registerFormData);
+      await createAccount(registerFormData)
       const data = await login({
         username: registerFormData.username,
         password: registerFormData.password,
-      });
-      localStorage.setItem("token", data.token);
-      setUser(data);
-      authCtx.login();
-      getAllGroupsData();
-      navigate(`/${data.username}/join-create`);
+      })
+      localStorage.setItem("token", data.token)
+      setUser(data)
+      authCtx.login()
+      getAllGroupsData()
+      navigate(`/${data.username}/join-create`)
     }
-  };
+  }
 
   return (
     <MainContext.Provider
@@ -247,12 +246,11 @@ const MainContextProvider = ({ children }) => {
         isGroupValid,
         getLoginData,
         createAccountHandler,
-      }}
-    >
+      }}>
       {children}
     </MainContext.Provider>
-  );
-};
+  )
+}
 
-export default MainContext;
-export { MainContextProvider };
+export default MainContext
+export { MainContextProvider }
