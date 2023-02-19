@@ -1,14 +1,14 @@
-import { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import "./Nav.scss";
-import AuthContext from "../../store/auth-context";
-import MainContext from "../../store/main-context";
+import { useContext } from "react"
+import { NavLink } from "react-router-dom"
+import "./Nav.scss"
+import AuthContext from "../../store/auth-context"
+import MainContext from "../../store/main-context"
 
 const Nav = ({ setShowMenu }) => {
-  const authCtx = useContext(AuthContext);
-  const mainCtx = useContext(MainContext);
+  const authCtx = useContext(AuthContext)
+  const mainCtx = useContext(MainContext)
   return (
-    <>
+    <nav>
       <ul className="nav" onClick={() => setShowMenu(false)}>
         {!authCtx.isLoggedIn && (
           <>
@@ -17,8 +17,7 @@ const Nav = ({ setShowMenu }) => {
                 to="/login"
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
-                }
-              >
+                }>
                 login
               </NavLink>
             </li>
@@ -27,8 +26,7 @@ const Nav = ({ setShowMenu }) => {
                 to="/register"
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
-                }
-              >
+                }>
                 register
               </NavLink>
             </li>
@@ -37,8 +35,7 @@ const Nav = ({ setShowMenu }) => {
                 to="/about"
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
-                }
-              >
+                }>
                 about
               </NavLink>
             </li>
@@ -51,8 +48,7 @@ const Nav = ({ setShowMenu }) => {
                 to={`/${mainCtx.user.username}/dashboard`}
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
-                }
-              >
+                }>
                 dashboard
               </NavLink>
             </li>
@@ -62,8 +58,7 @@ const Nav = ({ setShowMenu }) => {
                 to={`/${mainCtx.user.username}/profile`}
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
-                }
-              >
+                }>
                 profile
               </NavLink>
             </li>
@@ -73,8 +68,7 @@ const Nav = ({ setShowMenu }) => {
                 to={`/group/${mainCtx.currentGroup}`}
                 className={({ isActive }) =>
                   isActive ? "nav__link nav__link--active" : "nav__link"
-                }
-              >
+                }>
                 group
               </NavLink>
             </li>
@@ -87,8 +81,8 @@ const Nav = ({ setShowMenu }) => {
           </>
         )}
       </ul>
-    </>
-  );
-};
+    </nav>
+  )
+}
 
-export default Nav;
+export default Nav
