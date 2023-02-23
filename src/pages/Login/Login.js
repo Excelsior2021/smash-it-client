@@ -1,23 +1,23 @@
-import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import Input from "../../components/Input/Input";
-import Button from "../../components/Button/Button";
-import MainContext from "../../store/main-context";
-import "./Login.scss";
+import { useState, useContext } from "react"
+import { Link } from "react-router-dom"
+import Input from "../../components/Input/Input"
+import Button from "../../components/Button/Button"
+import MainContext from "../../store/main-context"
+import "./Login.scss"
 
 const Login = () => {
-  const mainCtx = useContext(MainContext);
+  const mainCtx = useContext(MainContext)
   const [loginFormState, setLoginFormState] = useState({
     username: "",
     password: "",
-  });
+  })
 
   const [loginFormValid, setLoginFormValid] = useState({
     username: null,
     password: null,
-  });
+  })
 
-  const [loginInvalid, setLoginInvalid] = useState(false);
+  const [loginInvalid, setLoginInvalid] = useState(false)
 
   return (
     <div className="login">
@@ -31,8 +31,7 @@ const Login = () => {
             setLoginFormValid,
             setLoginInvalid
           )
-        }
-      >
+        }>
         <div className="login__inputs">
           <Input
             form="login"
@@ -66,7 +65,7 @@ const Login = () => {
         </p>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
