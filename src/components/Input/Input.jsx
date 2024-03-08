@@ -1,4 +1,4 @@
-import "./Input.scss";
+import "./Input.scss"
 
 const Input = ({
   form,
@@ -13,7 +13,7 @@ const Input = ({
   passwordCheckValid,
   newGroupNameValid,
 }) => {
-  let lowercase = false;
+  let lowercase = false
 
   if (
     name === "firstName" ||
@@ -22,17 +22,17 @@ const Input = ({
     name === "joinGroup" ||
     name === "groupName"
   ) {
-    lowercase = true;
+    lowercase = true
   }
 
   const setValue = value => {
-    let changedValue;
-    lowercase ? (changedValue = value.toLowerCase()) : (changedValue = value);
+    let changedValue
+    lowercase ? (changedValue = value.toLowerCase()) : (changedValue = value)
     setFormState(prevState => ({
       ...prevState,
       [name]: changedValue,
-    }));
-  };
+    }))
+  }
 
   return (
     <div className={`input input--${form}`}>
@@ -53,6 +53,7 @@ const Input = ({
             ? 0
             : ""
         }
+        autoComplete="off"
       />
       {form === "login" && !valid && valid !== null && name === "username" && (
         <p className="input__invalid">please enter your username</p>
@@ -95,7 +96,7 @@ const Input = ({
         </p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

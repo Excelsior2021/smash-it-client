@@ -1,5 +1,5 @@
-import "./Main.scss";
-import Demo from "../Demo/Demo";
+import "./Main.scss"
+import Demo from "../Demo/Demo"
 
 const Main = ({ children }) => {
   return (
@@ -7,7 +7,7 @@ const Main = ({ children }) => {
       <Demo />
       <div className="main__container">{children}</div>
     </main>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main
