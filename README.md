@@ -6,7 +6,6 @@
     Performance tracking for table tennis.
   </p>
 
-
 <h4>
     <a href="smash-it.vercel.app">View Project</a>
 </div>
