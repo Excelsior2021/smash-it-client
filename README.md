@@ -12,11 +12,13 @@
 
 <br />
 
+<img src="readme_assets/smash-it-demo.gif" alt="smash it demo" />
+
 <!-- About the Project -->
 
 ## Motivation
 
-This project was inspired by the competitive nature of table tennis during my web development bootcamp. Between classes we would religiously play table tennis every chance we got. A skill that is a staple for working tech, being able to code merely comes 2nd place. As determination to be the best grew amongst us, we needed a way to track our stats and performance against each other. Methods such as using a spreadsheet or keeping score on a whiteboard proved inefficient or impraticable. As I was deciding on what to do for my capstone project, the idea occured to me to develop an app that would help us track our performance. Smashing two birds with one stone. Solving a problem that we had and having an idea for a project that would teach me invaulable skills.
+This project was inspired by the competitive nature of table tennis during my web development bootcamp. Between classes we would religiously play table tennis every chance we got. A skill that is a staple for working in tech, being able to code merely comes 2nd place. As determination to be the best grew amongst us, we needed a way to track our stats and performance against each other. Methods such as using a spreadsheet or keeping score on a whiteboard proved inefficient or impraticable. As I was deciding on what to do for my capstone project, the idea occured to me to develop an app that would help us track our performance. Smashing two birds with one stone. Solving a problem that we had and having an idea for a project that would teach me invaulable skills.
 
 ## Usage
 
@@ -25,8 +27,6 @@ This project was inspired by the competitive nature of table tennis during my we
 - A user can be a part of multiple groups.
 - Members of a group will have stats pooled for that group. which can be viewed on a table for group stats or on a user's profile for individual stats.
 - Members record scores for games played.
-
-<img src="readme_assets/smash-it-demo.gif" alt="smash it demo" />
 
 <!-- TechStack -->
 
