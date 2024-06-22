@@ -6,6 +6,8 @@
     Performance tracking for table tennis.
   </p>
 
+ ### Please see Smash It! remastered [here](Excelsior2021/smash-it-client)
+
 </div>
 
 <br />
